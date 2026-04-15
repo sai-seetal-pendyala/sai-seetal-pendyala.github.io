@@ -271,7 +271,7 @@ body::-webkit-scrollbar { display: none; }
     z-index: 3;
     margin-top: -80px;
     background: #ffffff;
-    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding: clamp(104px, 14vh, 176px) clamp(200px, 8vw, 200px);
     /* Bottom padding gives scroll room after last card sticks */
     padding-bottom: clamp(120px, 10vh, 140px);
     border-radius: 80px 80px 0 0;
@@ -517,7 +517,7 @@ body::-webkit-scrollbar { display: none; }
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding: clamp(104px, 14vh, 176px) clamp(200px, 8vw, 200px);
     padding-bottom: clamp(250px, 8vh, 260px);
 }
 
@@ -614,7 +614,7 @@ body::-webkit-scrollbar { display: none; }
    ============================================================ */
 .techstack-section {
     background: #ffffff;
-    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding: clamp(104px, 14vh, 176px) clamp(200px, 8vw, 200px);
     padding-bottom: clamp(60px, 8vh, 100px);
 }
 
@@ -643,7 +643,7 @@ body::-webkit-scrollbar { display: none; }
     text-align: center;
     line-height: 1.25;
     pointer-events: none;
-    padding: 6px;
+    padding: 5px;
     word-break: break-word;
     overflow-wrap: break-word;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
@@ -654,7 +654,7 @@ body::-webkit-scrollbar { display: none; }
    ============================================================ */
 .experience-section {
     background: #ffffff;
-    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding: clamp(104px, 14vh, 176px) clamp(200px, 8vw, 200px);
     padding-bottom: clamp(60px, 8vh, 100px);
 }
 
@@ -685,11 +685,11 @@ body::-webkit-scrollbar { display: none; }
 /* Gradient visual block — fills remaining card height, holds summary text */
 .exp-visual {
     flex: 1;
-    min-height: 400px;
+    min-height: 350px;
     margin: 10px 50px 50px;
     border-radius: 60px;
     background: linear-gradient(145deg, #c94272 0%, #e06035 52%, #f5b820 100%);
-    padding: 35px 35px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -719,7 +719,7 @@ body::-webkit-scrollbar { display: none; }
 .exp-company {
     font-family: 'DM Sans', sans-serif;
     font-weight: 900;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.5rem, 3vw, 2.0rem);
     line-height: 1.05;
     color: #101010;
     margin: 0 0 6px 0;
@@ -740,7 +740,7 @@ body::-webkit-scrollbar { display: none; }
     display: inline-block;
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
-    font-size: 1.0rem;
+    font-size: 0.8rem;
     letter-spacing: 0.03em;
     color: #101010;
     background: rgba(44, 41, 41, 0.144);
@@ -753,12 +753,12 @@ body::-webkit-scrollbar { display: none; }
 .exp-summary {
     font-family: 'DM Sans', sans-serif;
     font-weight: 500;
-    font-size: clamp(1.0rem, 1.3vw, 1.0rem);
+    font-size: clamp(0.8rem, 1.3vw, 0.9rem);
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.92);
     text-align: left;
     margin: 0;
-    padding: 5px 5px;
+    padding: 2px 2px;
 }
 
 .exp-summary strong {
@@ -771,7 +771,7 @@ body::-webkit-scrollbar { display: none; }
    ============================================================ */
 .edu-section {
     background: #ffffff;
-    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding: clamp(104px, 14vh, 176px) clamp(200px, 8vw, 200px);
     padding-bottom: clamp(80px, 10vh, 120px);
 }
 
@@ -936,15 +936,11 @@ body::-webkit-scrollbar { display: none; }
    ============================================================ */
 .cert-section {
     background: #ffffff;
-    padding: clamp(104px, 14vh, 176px) 0;
+    padding: clamp(104px, 14vh, 176px) clamp(200px, 8vw, 200px);
     padding-bottom: clamp(250px, 10vh, 260px);
     overflow: hidden;
 }
 
-.cert-section .work-label {
-    padding: 0 clamp(40px, 8vw, 112px);
-    margin-bottom: 56px;
-}
 
 /* ── Carousel wrapper — clips the overflowing track ── */
 .cert-carousel-wrap {
