@@ -1,0 +1,1291 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* hide scrollbar globally */
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar { display: none; }
+
+body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #f5b820;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+body::-webkit-scrollbar { display: none; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+    position: fixed;
+    top: 2%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px clamp(20px, 4vw, 56px);
+    pointer-events: none;
+}
+
+.nav > * {
+    pointer-events: auto;
+}
+
+/* SS logo — 1.5× */
+.nav-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.875rem;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+/* Pill nav container — 1.5×, truly centered on page */
+.nav-pill-wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 7px 9px;
+    /* fading glow shadow around the pill */
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 4px 24px rgba(0, 0, 0, 0.35),
+        0 0 40px rgba(0, 0, 0, 0.25),
+        0 0 80px rgba(0, 0, 0, 0.12);
+}
+
+.nav-link {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: background 0.2s ease, color 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-link.active {
+    background: #f9c23a;
+    color: #101010;
+}
+
+/* Social icons — 1.5× */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 21px;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+.nav-icon:hover {
+    opacity: 1;
+}
+
+.nav-icon svg {
+    width: 27px;
+    height: 27px;
+    fill: white;
+    stroke: none;
+    transition: fill 0.3s ease;
+}
+
+/* Nav on light-background sections */
+.nav--light .nav-logo {
+    color: #101010;
+}
+
+.nav--light .nav-pill-wrap {
+    background: rgba(0, 0, 0, 0.07);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.08),
+        0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.nav--light .nav-link {
+    color: #101010;
+}
+
+.nav--light .nav-link:hover {
+    background: rgba(0, 0, 0, 0.07);
+}
+
+.nav--light .nav-link.active {
+    background: #f9c23a;
+    color: #101010;
+}
+
+.nav--light .nav-icon svg {
+    fill: #101010;
+}
+
+/* ============================================================
+   HERO → ABOUT TRANSITION WRAPPER
+   Scopes the sticky hero so it un-sticks once about is past
+   ============================================================ */
+.hero-about-wrap {
+    position: relative;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 560px;
+    overflow: hidden;
+
+    /* Pink → Orange → Yellow gradient matching reference */
+    background: linear-gradient(
+        to right,
+        #c94272 0%,
+        #e06035 38%,
+        #f5b820 100%
+    );
+}
+
+/* ── Name text container — purely a positioning root ── */
+.hero-name {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Shared word style */
+.name-word {
+    position: absolute;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(65px, 9.67vw, 160px);
+    line-height: 1;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* SAI: left 10%, bottom edge at 40% from hero bottom */
+.name-sai {
+    left: 8%;
+    bottom: 35%;
+}
+
+/* SEETAL: left edge 55%, bottom edge at 40% from hero bottom */
+.name-seetal {
+    left: 48%;
+    bottom: 35%;
+}
+
+/* PENDYALA: left edge 65%, bottom edge at 25% from hero bottom */
+.name-pendyala {
+    left: 55%;
+    bottom: 18%;
+}
+
+/* ── Tagline: left edge 75%, bottom 10%, wraps to 2 lines ── */
+.hero-tagline {
+    position: absolute;
+    z-index: 1;
+    left: 60%;
+    bottom: 8%;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.7vw, 2.0rem);
+    line-height: 1.0;
+    color: #ffffff;
+    text-align: left;
+    pointer-events: none;
+}
+
+/* ── Photo — above ALL text layers ── */
+.hero-photo-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.hero-photo {
+    /* Center of image at left: 30% */
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    transform: translateX(-50%);
+    height: 127%;   /* 106% × 1.2 */
+    width: auto;
+    max-width: 98%;
+    object-fit: contain;
+    object-position: bottom center;
+
+    mix-blend-mode: multiply;
+}
+
+/* ============================================================
+   SELECTED WORK SECTION
+   ============================================================ */
+.work-section {
+    position: relative;
+    z-index: 3;
+    margin-top: -80px;
+    background: #ffffff;
+    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    /* Bottom padding gives scroll room after last card sticks */
+    padding-bottom: clamp(120px, 10vh, 140px);
+    border-radius: 80px 80px 0 0;
+}
+
+.work-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: 1.0rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.45);
+    margin-bottom: 100px;
+}
+
+/* ── Stack container — natural height drives scroll space ── */
+.work-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Individual card ── */
+.work-card {
+    position: sticky;
+    height: 65vh;
+    min-height: 400px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    border-radius: 60px;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.07);
+    padding: 60px 60px 60px;
+    display: flex;
+    flex-direction: column;
+    /* Scroll space: distance before next card starts stacking */
+    margin-bottom: 120px;
+}
+
+.work-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Sticky tops: each offset = previous + card-head height (64px) */
+.work-card:nth-child(1) { top: 110px; z-index: 10; }
+.work-card:nth-child(2) { top: 210px; z-index: 11; }
+.work-card:nth-child(3) { top: 310px; z-index: 12; }
+.work-card:nth-child(4) { top: 400px; z-index: 13; }
+
+/* ── Card header row ── */
+.card-head {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    height: 64px;
+    flex-shrink: 0;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.card-num {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(80px, 3.2vw, 90px);
+    line-height: 1;
+    color: #101010;
+    flex-shrink: 0;
+}
+
+.card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.0rem, 1.5vw, 3.0rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #101010;
+    flex: 1;
+}
+
+/* GitHub icon — top right of card header */
+.card-gh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #101010;
+    text-decoration: none;
+    flex-shrink: 0;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.card-gh:hover { opacity: 1; }
+
+.card-gh svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ── Card visual area — gradient placeholder panels ── */
+.card-visual {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr;
+    gap: 20px;
+    min-height: 0;
+}
+
+.vis-col {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    gap: 20px;
+}
+
+.vis-panel {
+    border-radius: 60px;
+    background: linear-gradient(135deg, #c94272 0%, #e06035 50%, #f5b820 100%);
+}
+
+/* ============================================================
+   CARD CONTENTS
+   ============================================================ */
+
+/* Left panel — project summary */
+.p01-left {
+    padding: 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    overflow: hidden;
+}
+
+.p01-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 1.05vw, 2.0rem);
+    line-height: 1.45;
+    color: #ffffff;
+}
+
+.p01-body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 1.05vw, 1.5rem);
+    line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+}
+
+/* Top right panel — 2×2 key findings grid */
+.p01-findings {
+    padding: 50px 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px 10px;
+    overflow: hidden;
+}
+
+.p01-stat-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+}
+
+.p01-stat-n {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.0rem, 1.3vw, 2.5rem);
+    color: #ffffff;
+    line-height: 1;
+}
+
+.p01-stat-l {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.0rem, 0.7vw, 1.2rem);
+    color: rgba(255,255,255,0.62);
+    line-height: 1.3;
+}
+
+/* Bottom right panel — tools & methods pills */
+.p01-tools {
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.p01-tool-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.p01-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.p01-pill {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.0rem;
+    color: #ffffff;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50px;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+
+.p01-award-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50px;
+    padding: 4px 12px;
+    white-space: nowrap;
+}
+
+/* Award badge sitting inside the left summary panel */
+.p01-left .p01-award-badge {
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+.about-section {
+    position: relative;
+    z-index: 2;
+    margin-top: -2px;
+    background: linear-gradient(to right, #c94272 0%, #e06035 38%, #f5b820 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding-bottom: clamp(250px, 8vh, 260px);
+}
+
+.about-inner {
+    width: 100%;
+}
+
+/* "ABOUT" label */
+.about-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: 1.0rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.45);
+    margin-bottom: 100px;
+}
+
+/* Handwriting heading — typing animation lives here */
+.about-heading {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: clamp(44px, 6.2vw, 96px);
+    line-height: 1.15;
+    color: #ffffff;
+    margin-bottom: clamp(32px, 5vh, 56px);
+    min-height: 1.3em;
+}
+
+/* Blinking dark cursor */
+.about-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.8em;
+    background: #ffffff;
+    vertical-align: middle;
+    margin-left: 3px;
+    border-radius: 1px;
+    animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* Body paragraphs — all bold, white */
+.about-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about-body p {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.0rem, 1.15vw, 1.2rem);
+    line-height: 1.75;
+    color: #ffffff;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Previously-bold <strong> stays black bold — stands out against white */
+.about-body strong {
+    font-weight: 2000;
+    color: #101010;
+}
+
+/* ── About content entry animation ──
+   Everything starts hidden; JS adds .about-el-in to reveal */
+.about-label,
+.about-heading,
+.about-body p {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.about-heading {
+    transition-delay: 0.12s;        /* label in first, heading follows */
+}
+
+.about-el-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ============================================================
+   TECH STACK SECTION
+   ============================================================ */
+.techstack-section {
+    background: #ffffff;
+    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding-bottom: clamp(60px, 8vh, 100px);
+}
+
+.sphere-field {
+    position: relative;
+    width: 100%;
+    height: 720px;
+    overflow: hidden;
+}
+
+.sphere-item {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    will-change: transform, opacity;
+    user-select: none;
+}
+
+.sphere-item span {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.25;
+    pointer-events: none;
+    padding: 6px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ============================================================
+   PROFESSIONAL EXPERIENCE SECTION
+   ============================================================ */
+.experience-section {
+    background: #ffffff;
+    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding-bottom: clamp(60px, 8vh, 100px);
+}
+
+.exp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+/* ── Card: white background, dark text, gradient block at bottom ── */
+.exp-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    border-radius: 60px;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.151);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+}
+
+/* Text content area */
+.exp-content {
+    padding: 50px 50px 40px;
+    flex-shrink: 0;
+}
+
+/* Gradient visual block — fills remaining card height, holds summary text */
+.exp-visual {
+    flex: 1;
+    min-height: 400px;
+    margin: 10px 50px 50px;
+    border-radius: 60px;
+    background: linear-gradient(145deg, #c94272 0%, #e06035 52%, #f5b820 100%);
+    padding: 35px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.exp-card:nth-child(2) .exp-visual {
+    background: linear-gradient(155deg, #cf3f68 0%, #e06035 48%, #f5b820 100%);
+}
+.exp-card:nth-child(3) .exp-visual {
+    background: linear-gradient(135deg, #c94272 0%, #d85c30 44%, #f0a820 100%);
+}
+
+/* Date tag */
+.exp-date-tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 10px;
+}
+
+/* Company name */
+.exp-company {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.05;
+    color: #101010;
+    margin: 0 0 6px 0;
+}
+
+/* Location / subtitle */
+.exp-location {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.0rem;
+    color: rgba(0, 0, 0, 0.45);
+    margin-bottom: 16px;
+}
+
+/* Role badge pill */
+.exp-role-badge {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.0rem;
+    letter-spacing: 0.03em;
+    color: #101010;
+    background: rgba(44, 41, 41, 0.144);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 50px;
+    padding: 6px 18px;
+}
+
+/* Two-sentence summary paragraphs — white text inside gradient box */
+.exp-summary {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.0rem, 1.3vw, 1.0rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.92);
+    text-align: left;
+    margin: 0;
+    padding: 5px 5px;
+}
+
+.exp-summary strong {
+    font-weight: 800;
+    color: #ffffff;
+}
+
+/* ============================================================
+   EDUCATION SECTION
+   ============================================================ */
+.edu-section {
+    background: #ffffff;
+    padding: clamp(104px, 14vh, 176px) clamp(40px, 8vw, 112px);
+    padding-bottom: clamp(80px, 10vh, 120px);
+}
+
+/* Timeline container — central line via ::before */
+.edu-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+}
+
+.edu-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    background: #101010;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Each row — card on one side, empty on the other */
+.edu-entry {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.edu-entry[data-side="left"] {
+    justify-content: flex-end;
+    padding-right: calc(50% + 60px);
+}
+
+.edu-entry[data-side="right"] {
+    justify-content: flex-start;
+    padding-left: calc(50% + 60px);
+}
+
+/* Dot on the line */
+.edu-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #101010;
+    border: 2.5px solid #ffffff;
+    outline: 2px solid #101010;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: opacity 0.35s ease 0.25s,
+                transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s;
+    z-index: 2;
+}
+
+.edu-entry.edu-visible .edu-dot {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Card */
+.edu-card {
+    width: 80%;
+    border-radius: 60px;
+    padding: 45px 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    background: linear-gradient(145deg, #c94272 0%, #e06035 52%, #f5b820 100%);
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.432);
+}
+
+.edu-entry:nth-child(2) .edu-card {
+    background: linear-gradient(158deg, #cf3f68 0%, #e06035 48%, #f5b820 100%);
+}
+.edu-entry:nth-child(3) .edu-card {
+    background: linear-gradient(135deg, #c94272 0%, #d55028 46%, #f0a820 100%);
+}
+.edu-entry:nth-child(4) .edu-card {
+    background: linear-gradient(152deg, #c94272 0%, #e06035 50%, #f5b820 100%);
+}
+
+/* Slide-in entrance — left cards from left, right cards from right */
+.edu-entry[data-side="left"] .edu-card {
+    opacity: 0;
+    transform: translateX(-56px);
+    transition: opacity 0.65s ease,
+                transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.edu-entry[data-side="right"] .edu-card {
+    opacity: 0;
+    transform: translateX(56px);
+    transition: opacity 0.65s ease,
+                transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.edu-entry.edu-visible .edu-card {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Card text */
+.edu-date {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: 1.0rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.68);
+    margin-bottom: 40px;
+}
+
+.edu-institution {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 1.9vw, 1.8rem);
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.edu-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 50px;
+}
+
+.edu-badge {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.0rem;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    padding: 4px 14px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    margin-bottom: 15px;
+}
+
+.edu-details {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================================
+   CERTIFICATIONS SECTION
+   ============================================================ */
+.cert-section {
+    background: #ffffff;
+    padding: clamp(104px, 14vh, 176px) 0;
+    padding-bottom: clamp(250px, 10vh, 260px);
+    overflow: hidden;
+}
+
+.cert-section .work-label {
+    padding: 0 clamp(40px, 8vw, 112px);
+    margin-bottom: 56px;
+}
+
+/* ── Carousel wrapper — clips the overflowing track ── */
+.cert-carousel-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 48px 0 52px;
+}
+
+/* ── Sliding track ── */
+.cert-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+/* ── Individual card ── */
+.cert-card {
+    flex: 0 0 clamp(380px, 42vw, 600px);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    border-radius: 60px;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.151);
+    padding: 52px 44px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    opacity: 0.4;
+    transform: scale(0.88);
+    transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.45s ease;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.cert-card.cert-active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+    cursor: default;
+}
+
+/* ── Logo badge ── */
+.cert-logo-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* ── Text elements ── */
+.cert-provider {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 12px;
+}
+
+.cert-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+    color: #101010;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.cert-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: rgba(0, 0, 0, 0.45);
+    margin-bottom: 20px;
+}
+
+.cert-summary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.45);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    flex: 1;
+}
+
+/* ── Show Credential button ── */
+.cert-credential {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #c94272 0%, #e06035 52%, #f5b820 100%);
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.07em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.cert-credential:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
+/* ── Dot navigation ── */
+.cert-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.cert-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.15);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+    flex-shrink: 0;
+}
+
+.cert-dot.cert-dot-active {
+    background: linear-gradient(135deg, #c94272, #f5b820);
+    transform: scale(1.4);
+    width: 24px;
+    border-radius: 5px;
+}
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+.contact-section {
+    position: relative;
+    z-index: 3;
+    margin-top: -80px;
+    min-height: 100vh;
+    background: linear-gradient(145deg, #c94272 0%, #e06035 50%, #f5b820 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(90px, 10vh, 100px) clamp(20px, 5vw, 60px);
+    border-radius: 80px 80px 0 0;
+}
+
+.contact-card {
+    background: #ffffff;
+    border-radius: 60px;
+    padding: clamp(48px, 6vw, 72px) clamp(40px, 5vw, 64px);
+    width: 100%;
+    max-width: 680px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+}
+
+.contact-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: #101010;
+    line-height: 1;
+    margin-bottom: 44px;
+    letter-spacing: -0.02em;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #101010;
+}
+
+.contact-label svg {
+    color: #101010;
+    flex-shrink: 0;
+}
+
+.contact-input {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #101010;
+    background: #f6f6f6;
+    border: 1.5px solid rgba(0,0,0,0.1);
+    border-radius: 14px;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    width: 100%;
+    resize: none;
+}
+
+.contact-input::placeholder {
+    color: rgba(0,0,0,0.3);
+}
+
+.contact-input:focus {
+    border-color: #c94272;
+    background: #ffffff;
+}
+
+.contact-textarea {
+    min-height: 160px;
+}
+
+.contact-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 18px 32px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #c94272 0%, #e06035 52%, #f5b820 100%);
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    margin-top: 8px;
+}
+
+.contact-submit:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+}
+
+.contact-submit svg {
+    flex-shrink: 0;
+}
+
+.contact-socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.contact-social-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    padding: 13px 20px;
+    border-radius: 50px;
+    border: 1.5px solid rgba(0,0,0,0.12);
+    color: #101010;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-social-badge:hover {
+    background: rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.22);
+}
+
+.contact-footer {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(26, 25, 25, 0.438);
+    text-align: center;
+    margin-top: 40px;
+    letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .name-word {
+        font-size: clamp(32px, 9vw, 60px);
+    }
+
+    .hero-photo {
+        height: 100%;
+        max-width: 90%;
+    }
+
+    .hero-name {
+        padding-bottom: clamp(90px, 14vh, 130px);
+    }
+
+    .hero-tagline {
+        font-size: clamp(1rem, 4vw, 1.4rem);
+        bottom: 20px;
+        right: 16px;
+    }
+
+    .nav-pill-wrap {
+        gap: 2px;
+    }
+
+    .nav-link {
+        padding: 6px 10px;
+        font-size: 0.62rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .nav-pill-wrap {
+        display: none;
+    }
+}
