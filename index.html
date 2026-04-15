@@ -257,7 +257,7 @@
                                 <div class="p01-pills"><span class="p01-pill">SQL</span><span class="p01-pill">DDL</span><span class="p01-pill">DML</span><span class="p01-pill">PostgreSQL</span></div>
                             </div>
                             <div class="p01-tool-row">
-                                <div class="p01-pills"><span class="p01-pill">ER Modeling</span><span class="p01-pill">3NF Normalization</span><span class="p01-pill">Star Schema Design</span><span class="p01-pill">Referential Integrity</span></div>
+                                <div class="p01-pills"><span class="p01-pill">ER Modeling</span><span class="p01-pill">3NF Normalization</span><span class="p01-pill">Star Schema Design</span></div>
                             </div>
                         </div>
                     </div>
@@ -749,9 +749,9 @@
                         const a = SKILLS[i], b = SKILLS[j];
                         const dx = b.x - a.x, dy = b.y - a.y;
                         const d  = Math.sqrt(dx * dx + dy * dy) || 0.001;
-                        const minD = (a.r + b.r) * 2.0;
+                        const minD = (a.r + b.r) * 1.8;
                         if (d < minD) {
-                            const f = ((minD - d) / minD) * 0.52;
+                            const f = ((minD - d) / minD) * 0.48;
                             const nx = dx / d, ny = dy / d;
                             a.fx -= nx * f; a.fy -= ny * f;
                             b.fx += nx * f; b.fy += ny * f;
