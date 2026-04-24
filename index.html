@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <!-- Apply saved theme before first paint to prevent flash -->
+    <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}());</script>
 </head>
 <body>
 
@@ -27,22 +29,39 @@
         <div class="nav-icons">
             <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/sai-seetal-pendyala/" target="_blank" class="nav-icon" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
                     <path d="M6.94 5a2 2 0 1 1-4-.002A2 2 0 0 1 6.94 5zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/>
                 </svg>
             </a>
             <!-- GitHub -->
             <a href="https://github.com/sai-seetal-pendyala" target="_blank" class="nav-icon" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="white">
+                <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
                 </svg>
             </a>
             <!-- Email -->
             <a href="mailto:spendyala1@hawk.illinoistech.edu" class="nav-icon" aria-label="Email">
-                <svg viewBox="0 0 24 24" fill="white">
+                <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
             </a>
+            <!-- Dark/Light toggle -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
         </div>
     </nav>
 
@@ -54,13 +73,13 @@
 
         <!-- Name text — each word individually placed -->
         <div class="hero-name" aria-label="Sai Seetal Pendyala">
-            <span class="name-word name-sai">SAI</span>
-            <span class="name-word name-seetal">SEETAL</span>
-            <span class="name-word name-pendyala">PENDYALA</span>
+            <span class="name-word name-sai">Sai</span>
+            <span class="name-word name-seetal">Seetal</span>
+            <span class="name-word name-pendyala">Pendyala</span>
         </div>
 
         <!-- Tagline: individually placed, wraps to 2 lines -->
-        <p class="hero-tagline">I'm a marketing analyst<br>who lives in the data and speaks in strategy.</p>
+        <p class="hero-tagline">I'm a marketing analyst who lives in the<br>data and speaks in strategy.</p>
 
         <!-- Photo — sits IN FRONT of name text -->
         <div class="hero-photo-wrap">
@@ -103,8 +122,9 @@
                 <div class="card-head">
                     <span class="card-num">01</span>
                     <span class="card-title">AI Marketing Allocation Engine</span>
-                    <a href="https://github.com/sai-seetal-pendyala/AI-Marketing-Allocation-Engine" target="_blank" class="card-gh" aria-label="GitHub">
+                    <a href="https://github.com/sai-seetal-pendyala/AI-Marketing-Allocation-Engine" target="_blank" class="card-gh" aria-label="View on GitHub">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        View on GitHub
                     </a>
                 </div>
                 <div class="card-visual">
@@ -166,7 +186,7 @@
                 <div class="card-head">
                     <span class="card-num">02</span>
                     <span class="card-title">FALSE GROWTH DETECTOR</span>
-                    <a href="https://github.com/sai-seetal-pendyala/SAS-Curiosity-Cup-2026" target="_blank" class="card-gh" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+                    <a href="https://github.com/sai-seetal-pendyala/SAS-Curiosity-Cup-2026" target="_blank" class="card-gh" aria-label="View on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg> View on GitHub</a>
                 </div>
                 <div class="card-visual">
 
@@ -205,7 +225,7 @@
                 <div class="card-head">
                     <span class="card-num">03</span>
                     <span class="card-title">AI AUGMENTED ATTRITION ENGINE</span>
-                    <a href="https://github.com/sai-seetal-pendyala/AI-Augmented-Attrition-Engine-TFA" target="_blank" class="card-gh" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+                    <a href="https://github.com/sai-seetal-pendyala/AI-Augmented-Attrition-Engine-TFA" target="_blank" class="card-gh" aria-label="View on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg> View on GitHub</a>
                 </div>
                 <div class="card-visual">
                     <div class="vis-panel p01-left">
@@ -237,7 +257,7 @@
                 <div class="card-head">
                     <span class="card-num">04</span>
                     <span class="card-title">RETAIL DATABASE DESIGN</span>
-                    <a href="https://github.com/sai-seetal-pendyala/Retail-Database-Design-Analytics" target="_blank" class="card-gh" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+                    <a href="https://github.com/sai-seetal-pendyala/Retail-Database-Design-Analytics" target="_blank" class="card-gh" aria-label="View on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg> View on GitHub</a>
                 </div>
                 <div class="card-visual">
                     <div class="vis-panel p01-left">
@@ -586,6 +606,23 @@
     </section>
 
     <script>
+        // ── Dark / Light theme toggle ──
+        (function () {
+            const root = document.documentElement;
+            const btn  = document.getElementById('themeToggle');
+            if (!btn) return;
+            btn.addEventListener('click', () => {
+                const dark = root.getAttribute('data-theme') === 'dark';
+                if (dark) {
+                    root.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    root.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }());
+
         // Active nav link on scroll
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -689,39 +726,35 @@
             if (!field) return;
 
             const COLORS = [
-                'radial-gradient(circle at 32% 28%, #fef3c7 0%, #f5b820 48%, #b45309 100%)',
-                'radial-gradient(circle at 32% 28%, #fed7aa 0%, #e06035 48%, #9a3412 100%)',
-                'radial-gradient(circle at 32% 28%, #fecdd3 0%, #c94272 48%, #881337 100%)',
+                'var(--c-sphere)',
+                'var(--c-sphere)',
+                'var(--c-sphere)',
             ];
 
             const SKILLS = [
                 { n: 'A/B Testing',    r: 95,  c: 2 },
                 { n: 'Python',         r: 120, c: 0 },
                 { n: 'Tableau',        r: 120, c: 0 },
-                { n: 'Power BI',       r: 110, c: 2 },
+                { n: 'Excel',          r: 92,  c: 2 },
                 { n: 'Google Ads',     r: 101, c: 1 },
                 { n: 'Notion AI',      r: 84,  c: 1 },
-                { n: 'Claude AI',      r: 98,  c: 2 },
                 { n: 'GA4',            r: 95,  c: 1 },
                 { n: 'SQL',            r: 110, c: 0 },
-                { n: 'Excel',          r: 92,  c: 2 },
+                { n: 'Power BI',       r: 110, c: 2 },
                 { n: 'Figma',          r: 92,  c: 1 },
                 { n: 'BigQuery',       r: 89,  c: 0 },
-                { n: 'ChatGPT',        r: 89,  c: 1 },
                 { n: 'HubSpot',        r: 86,  c: 1 },
                 { n: 'SEM/SEO',        r: 86,  c: 0 },
                 { n: 'Canva',          r: 73,  c: 2 },
                 { n: 'Git/GitHub',     r: 73,  c: 1 },
-                { n: 'Copilot',        r: 73,  c: 0 },
                 { n: 'Salesforce',     r: 80,  c: 2 },
                 { n: 'ETL',            r: 80,  c: 1 },
-                { n: 'R',              r: 100, c: 2 },
+                { n: 'Asana',          r: 71,  c: 0 },
                 { n: 'DAX',            r: 77,  c: 2 },
                 { n: 'Power Query',    r: 77,  c: 1 },
                 { n: 'Azure AI',       r: 77,  c: 0 },
-                { n: 'SPSS',           r: 74,  c: 2 },
                 { n: 'SAS',            r: 83,  c: 0 },
-                { n: 'Asana',          r: 71,  c: 0 },
+                { n: 'R',              r: 100, c: 2 },
                 { n: 'GTM',            r: 74,  c: 2 },
             ];
 
@@ -768,7 +801,7 @@
                 });
             }
 
-            // ── Build DOM + set drop-in start state ──
+            // ── Build DOM — visible immediately, floating from the start ──
             const sph = [];
             SKILLS.forEach((s, i) => {
                 const el = document.createElement('div');
@@ -786,83 +819,33 @@
 
                 // Per-sphere float parameters
                 s.phase  = i * 0.74;
-                s.ampX   = 5  + (i % 7) * 1.3;    // 5–13 px
-                s.ampY   = 6  + (i % 9) * 1.2;    // 6–16 px
+                s.ampX   = 5  + (i % 7) * 1.3;
+                s.ampY   = 6  + (i % 9) * 1.2;
                 s.spdX   = 0.28 + (i % 5) * 0.07;
                 s.spdY   = 0.22 + (i % 7) * 0.06;
-                s.hoverX = 0; s.hoverY = 0;   // current (lerped)
-                s.tHoverX = 0; s.tHoverY = 0; // target
-
-                // Drop-in: start sphere just above the top of the field
-                s.dropDist = Math.round(s.y) + s.r;
-                s.dropDelay = (i * 0.032).toFixed(3);
-                el.style.opacity   = '0';
-                el.style.transform = `translateY(-${s.dropDist}px)`;
-                el.style.transition =
-                    `opacity 0.3s ease ${s.dropDelay}s, ` +
-                    `transform 0.78s cubic-bezier(0.34, 1.56, 0.64, 1) ${s.dropDelay}s`;
+                s.hoverX = 0; s.hoverY = 0;
+                s.tHoverX = 0; s.tHoverY = 0;
 
                 sph.push({ el, s });
             });
 
-            // ── IntersectionObserver: trigger drop on every scroll-in ──
-            let floatActive = false;
-            let floatTimer  = null;
-            const totalDropMs = (sph.length - 1) * 32 + 900;
-
-            function resetSpheres() {
-                floatActive = false;
-                if (floatTimer) { clearTimeout(floatTimer); floatTimer = null; }
-                sph.forEach(({ el, s }) => {
-                    s.hoverX = 0; s.hoverY = 0; s.hoverDecay = false;
-                    el.style.transition =
-                        `opacity 0.3s ease ${s.dropDelay}s, ` +
-                        `transform 0.78s cubic-bezier(0.34, 1.56, 0.64, 1) ${s.dropDelay}s`;
-                    el.style.opacity   = '0';
-                    el.style.transform = `translateY(-${s.dropDist}px)`;
-                });
-            }
-
-            function startDrop() {
-                sph.forEach(({ el }) => {
-                    el.style.opacity   = '1';
-                    el.style.transform = 'translateY(0)';
-                });
-                floatTimer = setTimeout(() => {
-                    sph.forEach(({ el }) => { el.style.transition = 'none'; });
-                    floatActive = true;
-                    floatTimer = null;
-                }, totalDropMs);
-            }
-
-            const dropObs = new IntersectionObserver((obsEntries) => {
-                if (obsEntries[0].isIntersecting) {
-                    startDrop();
-                } else {
-                    resetSpheres();
-                }
-            }, { threshold: 0.1 });
-            dropObs.observe(field);
-
-            // ── Float + hover rAF loop ──
+            // ── Float + hover rAF loop (always active) ──
             const LERP = 0.10;
 
             function loop(ts) {
-                if (floatActive) {
-                    const t = ts * 0.001;
-                    sph.forEach(({ el, s }) => {
-                        const fx = s.ampX * Math.sin(s.phase + t * s.spdX);
-                        const fy = s.ampY * Math.cos(s.phase + t * s.spdY);
-                        if (s.hoverDecay) {
-                            s.hoverX *= (1 - LERP);
-                            s.hoverY *= (1 - LERP);
-                            if (Math.abs(s.hoverX) < 0.5 && Math.abs(s.hoverY) < 0.5) {
-                                s.hoverX = 0; s.hoverY = 0; s.hoverDecay = false;
-                            }
+                const t = ts * 0.001;
+                sph.forEach(({ el, s }) => {
+                    const fx = s.ampX * Math.sin(s.phase + t * s.spdX);
+                    const fy = s.ampY * Math.cos(s.phase + t * s.spdY);
+                    if (s.hoverDecay) {
+                        s.hoverX *= (1 - LERP);
+                        s.hoverY *= (1 - LERP);
+                        if (Math.abs(s.hoverX) < 0.5 && Math.abs(s.hoverY) < 0.5) {
+                            s.hoverX = 0; s.hoverY = 0; s.hoverDecay = false;
                         }
-                        el.style.transform = `translate(${fx + s.hoverX}px,${fy + s.hoverY}px)`;
-                    });
-                }
+                    }
+                    el.style.transform = `translate(${fx + s.hoverX}px,${fy + s.hoverY}px)`;
+                });
                 requestAnimationFrame(loop);
             }
             requestAnimationFrame(loop);
@@ -873,7 +856,6 @@
 
             sph.forEach(({ el, s: hov }) => {
                 el.addEventListener('mouseenter', () => {
-                    if (!floatActive) return;
                     sph.forEach(({ s: os }) => {
                         if (os === hov) return;
                         const dx = os.x - hov.x, dy = os.y - hov.y;
@@ -965,44 +947,92 @@
         }());
 
 
-        // ── Certifications carousel ──
+        // ── Certifications carousel (infinite loop) ──
         (function () {
             const track = document.getElementById('certTrack');
             if (!track) return;
-            const cards  = [...track.querySelectorAll('.cert-card')];
-            const dots   = [...document.querySelectorAll('.cert-dot')];
-            const GAP    = 32; // must match CSS gap
-            let active   = 0;
 
-            function update(animate) {
-                const cardW  = cards[0].offsetWidth;
-                const wrapW  = track.parentElement.offsetWidth;
-                const offset = wrapW / 2 - cardW / 2 - active * (cardW + GAP);
-                if (!animate) track.style.transition = 'none';
-                track.style.transform = `translateX(${offset}px)`;
-                if (!animate) requestAnimationFrame(() => { track.style.transition = ''; });
-                cards.forEach((c, i) => c.classList.toggle('cert-active', i === active));
-                dots.forEach((d, i)  => d.classList.toggle('cert-dot-active', i === active));
+            const realCards = [...track.querySelectorAll('.cert-card')];
+            const N    = realCards.length;
+            const dots = [...document.querySelectorAll('.cert-dot')];
+            const GAP  = 20;
+            let active  = 0;
+            let jumping = false;
+
+            // Track layout: [cloneLast][card0]…[card(N-1)][cloneFirst]
+            const cloneLast  = realCards[N - 1].cloneNode(true);
+            const cloneFirst = realCards[0].cloneNode(true);
+            track.insertBefore(cloneLast, track.firstChild);
+            track.appendChild(cloneFirst);
+            const allCards = [...track.querySelectorAll('.cert-card')];
+
+            function offsetFor(idx) {
+                const cardW = allCards[0].offsetWidth;
+                const wrapW = track.parentElement.offsetWidth;
+                return wrapW / 2 - cardW / 2 - idx * (cardW + GAP);
             }
 
-            dots.forEach((d, i) => d.addEventListener('click', () => { active = i; update(true); }));
-            cards.forEach((c, i) => c.addEventListener('click', () => { active = i; update(true); }));
-            window.addEventListener('resize', () => update(false));
-            update(false);
+            function moveTo(idx, animate) {
+                if (!animate) track.style.transition = 'none';
+                track.style.transform = `translateX(${offsetFor(idx)}px)`;
+                if (!animate) requestAnimationFrame(() => { track.style.transition = ''; });
+                allCards.forEach((c, i) => c.classList.toggle('cert-active', i === idx));
+            }
+
+            function goTo(realIdx, animate) {
+                active = ((realIdx % N) + N) % N;
+                moveTo(active + 1, animate);
+                dots.forEach((d, i) => d.classList.toggle('cert-dot-active', i === active));
+            }
+
+            dots.forEach((d, i) => d.addEventListener('click', () => {
+                if (jumping) return;
+                goTo(i, true);
+            }));
+
+            realCards.forEach((c, i) => c.addEventListener('click', () => {
+                if (jumping) return;
+                goTo(i, true);
+            }));
+
+            // Right-side clone (first card copy): loop forward to card 0
+            cloneFirst.addEventListener('click', () => {
+                if (jumping) return;
+                jumping = true;
+                active = 0;
+                dots.forEach((d, i) => d.classList.toggle('cert-dot-active', i === 0));
+                moveTo(N + 1, true);
+                setTimeout(() => { moveTo(1, false); jumping = false; }, 580);
+            });
+
+            // Left-side clone (last card copy): loop backward to card N-1
+            cloneLast.addEventListener('click', () => {
+                if (jumping) return;
+                jumping = true;
+                active = N - 1;
+                dots.forEach((d, i) => d.classList.toggle('cert-dot-active', i === N - 1));
+                moveTo(0, true);
+                setTimeout(() => { moveTo(N, false); jumping = false; }, 580);
+            });
+
+            window.addEventListener('resize', () => goTo(active, false));
+            goTo(0, false);
         }());
 
-        // ── Education timeline scroll reveal ──
+        // ── Education timeline scroll reveal (loops on every scroll in/out) ──
         (function () {
             const entries = document.querySelectorAll('.edu-entry');
             if (!entries.length) return;
 
             const observer = new IntersectionObserver((observed) => {
                 observed.forEach(item => {
-                    if (!item.isIntersecting) return;
-                    item.target.classList.add('edu-visible');
-                    observer.unobserve(item.target);
+                    if (item.isIntersecting) {
+                        item.target.classList.add('edu-visible');
+                    } else {
+                        item.target.classList.remove('edu-visible');
+                    }
                 });
-            }, { threshold: 0.18 });
+            }, { threshold: 0.35 });
 
             entries.forEach(e => observer.observe(e));
         }());
