@@ -27,6 +27,9 @@
         </div>
 
         <div class="nav-icons">
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
             <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/sai-seetal-pendyala/" target="_blank" class="nav-icon" aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -623,6 +626,27 @@
             });
         }());
 
+        // ── Hamburger menu toggle ──
+        (function () {
+            const hamburger = document.getElementById('navHamburger');
+            const pillWrap = document.querySelector('.nav-pill-wrap');
+            if (!hamburger || !pillWrap) return;
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                pillWrap.classList.toggle('nav-open');
+                document.body.style.overflow = pillWrap.classList.contains('nav-open') ? 'hidden' : '';
+            });
+
+            pillWrap.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    pillWrap.classList.remove('nav-open');
+                    document.body.style.overflow = '';
+                });
+            });
+        }());
+
         // Active nav link on scroll
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -759,16 +783,27 @@
             ];
 
             const W  = field.offsetWidth || 1000;
-            const H  = 720;
+            const isMobile = W < 768;
+            const H  = isMobile ? Math.round(W * 16 / 9) : 720;
             const cx = W / 2;
             const cy = H / 2;
+
+            if (isMobile) {
+                SKILLS.forEach(s => { s.r = Math.round(s.r * 0.5); });
+                field.style.height = H + 'px';
+            }
 
             // ── Seed positions ──
             SKILLS.forEach((s, i) => {
                 const angle = i * 2.3999;
                 const dist  = 30 + i * 16;
-                s.x  = cx + Math.cos(angle) * dist * 3.2;
-                s.y  = cy + Math.sin(angle) * dist * 0.5;
+                if (isMobile) {
+                    s.x  = cx + Math.cos(angle) * dist * 0.5;
+                    s.y  = cy + Math.sin(angle) * dist * 3.0;
+                } else {
+                    s.x  = cx + Math.cos(angle) * dist * 3.2;
+                    s.y  = cy + Math.sin(angle) * dist * 0.5;
+                }
                 s.x  = Math.max(s.r, Math.min(W - s.r, s.x));
                 s.y  = Math.max(s.r, Math.min(H - s.r, s.y));
                 s.vx = 0; s.vy = 0;
@@ -792,12 +827,22 @@
                     }
                 }
                 SKILLS.forEach(s => {
-                    s.fx += (cx - s.x) * 0.0007;
-                    s.fy += (cy - s.y) * 0.007;
+                    if (isMobile) {
+                        s.fx += (cx - s.x) * 0.007;
+                        s.fy += (cy - s.y) * 0.0007;
+                    } else {
+                        s.fx += (cx - s.x) * 0.0007;
+                        s.fy += (cy - s.y) * 0.007;
+                    }
                     s.vx  = (s.vx + s.fx) * 0.78;
                     s.vy  = (s.vy + s.fy) * 0.78;
-                    s.x   = Math.max(s.r * 0.3, Math.min(W - s.r * 0.3, s.x + s.vx));
-                    s.y   = Math.max(s.r * 0.3, Math.min(H - s.r * 0.3, s.y + s.vy));
+                    if (isMobile) {
+                        s.x   = Math.max(s.r, Math.min(W - s.r, s.x + s.vx));
+                        s.y   = Math.max(s.r, Math.min(H - s.r, s.y + s.vy));
+                    } else {
+                        s.x   = Math.max(s.r * 0.3, Math.min(W - s.r * 0.3, s.x + s.vx));
+                        s.y   = Math.max(s.r * 0.3, Math.min(H - s.r * 0.3, s.y + s.vy));
+                    }
                 });
             }
 

@@ -1297,40 +1297,539 @@ body::-webkit-scrollbar { display: none; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: var(--c-text);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-hamburger.active span {
+    background: #ffffff;
+}
+
+.nav-hamburger.active span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.nav-hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-hamburger.active span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ── Large tablets / small laptops ── */
+@media (max-width: 1200px) {
+    .about-section,
+    .work-section,
+    .techstack-section,
+    .experience-section,
+    .edu-section,
+    .cert-section {
+        padding-left: clamp(32px, 5vw, 80px);
+        padding-right: clamp(32px, 5vw, 80px);
+    }
+
+    .exp-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    .work-card {
+        padding: 40px;
+        border-radius: 40px;
+    }
+
+    .vis-panel {
+        border-radius: 40px;
+    }
+
+    .card-head {
+        gap: 30px;
+    }
+
+    .card-num {
+        font-size: clamp(50px, 5vw, 80px);
+    }
+}
+
+/* ── Tablets ── */
+@media (max-width: 1024px) {
+    .card-visual {
+        grid-template-columns: 1fr;
+    }
+
+    .work-card {
+        height: auto;
+        min-height: unset;
+    }
+
+    .sphere-field {
+        height: 500px;
+    }
+
+    .edu-card {
+        width: 100%;
+    }
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
-    .name-word {
-        font-size: clamp(32px, 9vw, 60px);
+    /* Navigation */
+    .nav-hamburger {
+        display: flex;
     }
 
-    .hero-photo {
-        height: 100%;
-        max-width: 90%;
+    .nav-icon {
+        display: none;
     }
 
-    .hero-name {
-        padding-bottom: clamp(90px, 14vh, 130px);
+    .nav-logo {
+        position: relative;
+        z-index: 101;
     }
 
-    .hero-tagline {
-        font-size: clamp(1rem, 4vw, 1.4rem);
-        bottom: 20px;
-        right: 16px;
+    .nav-icons {
+        position: relative;
+        z-index: 101;
     }
 
     .nav-pill-wrap {
-        gap: 2px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-radius: 0;
+        padding: 80px 40px;
+        box-shadow: none;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 100;
+    }
+
+    .nav-pill-wrap.nav-open {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
     }
 
     .nav-link {
-        padding: 6px 10px;
-        font-size: 0.62rem;
+        font-size: 1.2rem;
+        padding: 14px 36px;
+        width: 100%;
+        text-align: center;
+        color: #ffffff;
     }
 
+    .nav-link.active {
+        background: #f9c23a;
+        color: #101010;
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Hero */
+    .hero {
+        height: 100vh;
+        min-height: 500px;
+    }
+
+    .name-word {
+        font-size: clamp(36px, 10vw, 64px);
+    }
+
+    .name-sai {
+        left: 8%;
+        bottom: 36%;
+    }
+
+    .name-seetal {
+        left: 40%;
+        bottom: 36%;
+    }
+
+    .name-pendyala {
+        left: 15%;
+        bottom: 22%;
+    }
+
+    .hero-tagline {
+        left: 5%;
+        right: 5%;
+        bottom: 5%;
+        font-size: clamp(0.82rem, 3.2vw, 1.1rem);
+        text-align: center;
+    }
+
+    .hero-photo {
+        left: 50%;
+        height: 85%;
+        max-width: 95%;
+    }
+
+    /* About */
+    .about-section {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 100px;
+    }
+
+    .about-label {
+        margin-bottom: 48px;
+    }
+
+    .about-heading {
+        font-size: clamp(32px, 7vw, 52px);
+    }
+
+    /* Work */
+    .work-section {
+        border-radius: 40px 40px 0 0;
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .work-label {
+        margin-bottom: 48px;
+    }
+
+    .work-card {
+        height: auto;
+        min-height: unset;
+        padding: 24px 20px;
+        border-radius: 24px;
+        margin-bottom: 80px;
+    }
+
+    .work-card:nth-child(1) { top: 64px; }
+    .work-card:nth-child(2) { top: 120px; }
+    .work-card:nth-child(3) { top: 176px; }
+    .work-card:nth-child(4) { top: 232px; }
+
+    .work-card:last-child {
+        margin-bottom: 0;
+    }
+
+    .vis-panel {
+        border-radius: 20px;
+    }
+
+    .card-visual {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .vis-col {
+        grid-template-rows: auto auto;
+    }
+
+    .card-head {
+        gap: 8px;
+        height: auto;
+        padding-bottom: 10px;
+        margin-bottom: 14px;
+    }
+
+    .card-num {
+        font-size: 36px;
+    }
+
+    .card-title {
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .card-gh {
+        font-size: 0.65rem;
+        padding: 3px 8px 3px 6px;
+        white-space: nowrap;
+    }
+
+    .card-gh svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .p01-left {
+        padding: 24px 20px;
+        gap: 14px;
+    }
+
+    .p01-headline {
+        font-size: 1.05rem;
+        line-height: 1.4;
+    }
+
+    .p01-body {
+        font-size: 0.9rem;
+        line-height: 1.55;
+    }
+
+    .p01-findings {
+        padding: 20px;
+        gap: 14px 8px;
+    }
+
+    .p01-stat-n {
+        font-size: 1.4rem;
+    }
+
+    .p01-stat-l {
+        font-size: 0.75rem;
+    }
+
+    .p01-tools {
+        padding: 16px 20px;
+    }
+
+    .p01-pill {
+        font-size: 0.78rem;
+        padding: 2px 8px;
+    }
+
+    .p01-award-badge {
+        font-size: 0.75rem;
+    }
+
+    /* Tech Stack */
+    .techstack-section {
+        padding-top: 64px;
+        padding-bottom: 40px;
+    }
+
+    /* Experience */
+    .experience-section {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .exp-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .exp-card {
+        border-radius: 28px;
+    }
+
+    .exp-content {
+        padding: 28px 24px 20px;
+    }
+
+    .exp-visual {
+        min-height: 180px;
+        margin: 8px 24px 24px;
+        border-radius: 20px;
+        padding: 20px 16px;
+    }
+
+    /* Education */
+    .edu-section {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .edu-timeline::before {
+        left: 16px;
+    }
+
+    .edu-entry[data-side="left"],
+    .edu-entry[data-side="right"] {
+        justify-content: flex-start;
+        padding-left: 48px;
+        padding-right: 0;
+    }
+
+    .edu-dot {
+        left: 16px;
+    }
+
+    .edu-card {
+        width: 100%;
+        border-radius: 24px;
+        padding: 24px 20px;
+    }
+
+    .edu-entry[data-side="left"] .edu-card {
+        transform: translateX(32px);
+    }
+
+    .edu-entry[data-side="right"] .edu-card {
+        transform: translateX(32px);
+    }
+
+    .edu-entry.edu-visible .edu-card {
+        transform: translateX(0);
+    }
+
+    .edu-date {
+        margin-bottom: 16px;
+        font-size: 0.85rem;
+    }
+
+    .edu-institution {
+        font-size: 1.2rem;
+    }
+
+    .edu-sub {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .edu-badge {
+        font-size: 0.85rem;
+    }
+
+    .edu-details {
+        font-size: 0.82rem;
+    }
+
+    /* Certifications */
+    .cert-section {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .cert-card {
+        flex: 0 0 260px;
+        border-radius: 28px;
+        padding: 32px 24px 28px;
+    }
+
+    .cert-logo-wrap {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 20px;
+    }
+
+    .cert-title {
+        font-size: 1.05rem;
+    }
+
+    /* Contact */
+    .contact-section {
+        border-radius: 40px 40px 0 0;
+        padding: 60px 16px;
+    }
+
+    .contact-card {
+        border-radius: 28px;
+        padding: 32px 24px;
+    }
+
+    .contact-heading {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 24px;
+    }
+
+    .contact-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-input {
+        border-radius: 12px;
+        padding: 12px 14px;
+    }
+
+    .contact-submit {
+        padding: 14px 24px;
+        font-size: 0.9rem;
+    }
+
+    .contact-socials {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
 
+/* ── Small mobile ── */
 @media (max-width: 480px) {
-    .nav-pill-wrap {
-        display: none;
+    .nav {
+        padding: 12px 16px;
+    }
+
+    .nav-logo {
+        font-size: 1.4rem;
+    }
+
+    .nav-icons {
+        gap: 12px;
+    }
+
+    .nav-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .name-word {
+        font-size: clamp(28px, 9vw, 44px);
+    }
+
+    .name-sai {
+        left: 5%;
+        bottom: 34%;
+    }
+
+    .name-seetal {
+        left: 32%;
+        bottom: 34%;
+    }
+
+    .name-pendyala {
+        left: 10%;
+        bottom: 22%;
+    }
+
+    .hero-tagline {
+        font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+    }
+
+    .hero-photo {
+        height: 75%;
+    }
+
+    .about-heading {
+        font-size: clamp(28px, 7vw, 40px);
+    }
+
+    .card-num {
+        font-size: 28px;
+    }
+
+    .card-title {
+        font-size: 0.85rem;
     }
 }
 
